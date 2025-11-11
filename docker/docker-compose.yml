@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15          # works fine with Odoo 19
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-odoo}
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    # Expose only if you need external DB tools (optional)
+    # ports: ["5432:5432"]
+
+  odoo:
+    image: odoo:19.0            # official Community image
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"              # Odoo web UI
+    restart: unless-stopped
+    environment:
+      # Connection to PostgreSQL
+      HOST: db
+      USER: odoo
+      PASSWORD: ${POSTGRES_PASSWORD:-odoo}
+      # Optional: create a master admin password for DB actions
+      # (you can also set it later via UI → Settings → Database Structure)
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
+    # Mount a folder where you can drop extra modules.
+    # Anything placed in `../extra-addons` on the host will be available
+    # under `/mnt/extra-addons` inside the container.
+    volumes:
+      - ../extra-addons:/mnt/extra-addons
+      - odoo-web-data:/var/lib/odoo
+    # You can set Odoo to start in developer mode automatically:
+    # command: ["odoo", "--dev=all", "-c", "/etc/odoo/odoo.conf"]
+    # (the default command already reads /etc/odoo/odoo.conf)
+
+volumes:
+  pgdata:
+  odoo-web-data:
