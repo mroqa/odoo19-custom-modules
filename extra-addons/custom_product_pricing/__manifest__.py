@@ -1,6 +1,6 @@
 {
     'name': 'Auto Product Pricing',
-    'version': '2.0',
+    'version': '2.1',
     'author': "Mohammed Roqa",
     'category': 'Sales',
     'summary': 'Automatic price calculation based on profit margin',
@@ -10,7 +10,7 @@
         and the specified profit margin.
     """,
     'depends': ['base', 'product'],
-    'data': [],
+    'data': ['views/product_template_views.xml'],
     'installable': True,
     'application': True,
     'auto_install': False,
