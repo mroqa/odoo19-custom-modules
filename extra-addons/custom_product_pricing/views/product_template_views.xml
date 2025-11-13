@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <record id="product_template_form_view_profit_margin" model="ir.ui.view">
-            <field name="name">product.template.form.profit.margin</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_form_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='list_price']" position="after">
-                    <field name="profit_margin"/>
-                    <field name="auto_price"/>
-                </xpath>
+    <record id="view_product_form_custom_pricing" model="ir.ui.view">
+        <field name="name">product.template.custom.pricing</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <field name="standard_price" position="after">
+                <field name="profit_margin" widget="percentage"/>
+                <field name="auto_price" readonly="1" widget="monetary"/>
             </field>
-        </record>
-    </data>
+        </field>
+    </record>
 </odoo>

@@ -1,6 +1,6 @@
 {
     'name': 'Auto Product Pricing',
-    'version': '2.1',
+    'version': '2.2',
     'author': "Mohammed Roqa",
     'category': 'Sales',
     'summary': 'Automatic price calculation based on profit margin',
