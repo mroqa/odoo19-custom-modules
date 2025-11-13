@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_form_view_profit_margin" model="ir.ui.view">
+            <field name="name">product.template.form.profit.margin</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='list_price']" position="after">
+                    <field name="profit_margin"/>
+                    <field name="auto_price"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
