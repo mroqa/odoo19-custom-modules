@@ -9,9 +9,8 @@
         It then automatically calculates the sales price based on the product's cost
         and the specified profit margin.
     """,
-    'depends': ['base', 'product'],
+    'depends': ['product'],
     'data': ['views/product_template_views.xml'],
     'installable': True,
-    'application': True,
     'auto_install': False,
 }
