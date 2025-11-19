@@ -2,7 +2,6 @@
 from odoo import http
 from odoo.http import request
 
-
 class ProductPricingController(http.Controller):
 
     @http.route('/api/v1/product/<int:product_id>/auto_price',
