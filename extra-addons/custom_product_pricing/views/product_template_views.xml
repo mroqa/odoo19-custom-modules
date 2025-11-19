@@ -6,8 +6,9 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <field name="standard_price" position="after">
-                <field name="profit_margin" widget="percentage"/>
-                <field name="auto_price" readonly="1" widget="monetary"/>
+                <field name="profit_margin" widget="percentage" string="Profit Margin"/>
+                <field name="auto_price" readonly="1" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <button name="action_apply_auto_price" type="object" string="Apply to Sales Price" class="btn-link"/>
             </field>
         </field>
     </record>
