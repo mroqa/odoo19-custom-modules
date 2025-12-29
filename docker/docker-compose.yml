@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   db:
     image: postgres:15          # works fine with Odoo 19
@@ -37,7 +35,20 @@ services:
     # You can set Odoo to start in developer mode automatically:
     # command: ["odoo", "--dev=all", "-c", "/etc/odoo/odoo.conf"]
     # (the default command already reads /etc/odoo/odoo.conf)
+    
+  bagofwords:
+    image: bagofwords/bagofwords
+    pull_policy: always
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    user: root
+    environment:
+      BOW_DATABASE_URL: sqlite:////data/bow.db
+    volumes:
+      - bagofwords-data:/data
 
 volumes:
   pgdata:
   odoo-web-data:
+  bagofwords-data:
